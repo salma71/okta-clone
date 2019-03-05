@@ -1,13 +1,17 @@
 var createError = require('http-errors')
 var express = require('express')
 var path = require('path')
-// var cookieParser = require('cookie-parser');
-var logger = require('morgan')
+const logger = require('morgan')
+const session = require('express-session')
+const process = require('dotenv').config()
 
-var indexRouter = require('./routes/index')
-var usersRouter = require('./routes/users')
+// var indexRouter = require('./routes/index')
+// var usersRouter = require('./routes/users')
+// delete the default routes and define the new created ones
+const dashboardRouter = require('./routes/dashboard')
+const publicRouter = require('./routes/public')
 
-var app = express()
+const app = express()
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -21,13 +25,18 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(
   session({
-    secret: 'THIS_IS_MY_SECRET_STRING',
+    secret: process.env.SECRET,
     resave: true,
     saveUninitialized: false
   })
 )
-app.use('/', indexRouter)
-app.use('/users', usersRouter)
+
+// app.use('/', indexRouter)
+// app.use('/users', usersRouter)
+
+// route the new created routes for app.js
+app.use('/', publicRouter)
+app.use('/dashboard', dashboardRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
