@@ -1,0 +1,23 @@
+{
+  "name": "okta-clone",
+  "version": "1.0.0",
+  "description": "User authentication application built with Node.js ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salma71/okta-clone.git"
+  },
+  "author": "Salma Elshahawy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/salma71/okta-clone/issues"
+  },
+  "homepage": "https://github.com/salma71/okta-clone#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-generator": "^4.16.0"
+  }
+}
